@@ -66,8 +66,51 @@ PHMAINT ~~ p43*PHAMB
 PHMAINT ~~ p42*PHCONF
 '
 
-first.path.model.fit <- sem(first.path.model, sample.cov=firstPathCorr, sample.nobs=126)
+first.path.model.fit <- sem(first.path.model, sample.cov=MySecondRegCorrRev, sample.nobs=126)
 summary(first.path.model.fit, rsquare=TRUE)
 
 lavInspect(first.path.model.fit, what="est")
 
+# to get LISREL type pattern and parameter estimate matrices
+
+lavInspect(first.path.model.fit, what="est") # LISREL estimates
+lavInspect(first.path.model.fit)             # which parameters are estimated
+
+# you can get the additional statistics and matrices as shown below
+
+# get fit measures
+fitMeasures(first.path.model.fit)
+
+## remove coefficients
+
+
+
+
+
+first.path.model <- '
+XHTENANX ~  b52*PHCONF + b54*PHMAINT
+XHDEPRES ~   b63*PHAMB 
+XHACHFI ~ b75*XHTENANX 
+XHACHFE ~ b86*XHDEPRES 
+PHLOVE   ~~ 1*PHLOVE
+PHCONF   ~~ 1*PHCONF
+PHAMB   ~~ 1*PHAMB
+PHMAINT  ~~ 1*PHMAINT
+XHTENANX ~~ p55*XHTENANX
+XHDEPRES ~~ p66*XHDEPRES
+XHACHFI ~~ p77*XHACHFI
+XHACHFE ~~ p88*XHACHFE
+PHCONF   ~~ p21*PHLOVE
+PHAMB   ~~ p31*PHLOVE
+PHMAINT   ~~ p41*PHLOVE
+PHAMB ~~ p32*PHCONF
+PHMAINT ~~ p43*PHAMB
+PHMAINT ~~ p42*PHCONF
+'
+
+first.path.model.fit <- sem(first.path.model, sample.cov=MySecondRegCorrRev, sample.nobs=126)
+summary(first.path.model.fit, rsquare=TRUE)
+
+lavInspect(first.path.model.fit, what="est")
+
+# to get LISREL type pattern and parameter estimate matrices
