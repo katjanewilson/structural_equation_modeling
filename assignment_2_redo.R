@@ -27,21 +27,6 @@ MySecondRegCorr   # check the correlation matrix
 MySecondRegCorrRev <- MySecondRegCorr[c(1,2,3,4,7,8,5,6),c(1,2,3,4,7,8,5,6)]
 MySecondRegCorrRev   # check the correlation matrix
 
-# create the path model notice that the model is in single quotes as this
-# info is passed along to lavaan as text
-# regressions will be indicated using ~
-# correlations or covariances will be indicated using ~~
-# parameter names are arbitrary but I tried to make them conform to the LISREL
-#   model  e.g. b51
-
-# PHLOVE   ~~ 1*PHLOVE fixes the psi 1 1 value at 1
-# XHTENANX ~~ p55*XHTENANX estimates the residual variance
-# PHCONF   ~~ p21*PHLOVE  estimates the correlation between PHCONF and PHLOVE
-#  make sure to specify these as lower diagonal values i.e. PHCONF appears
-#  after PHLOVE in the correlation matrix  this will save you some grief
-#  down the road
-# all unspecified coefficients are fixed to 0
-
 require("lavaan")
 
 first.path.model <- '
