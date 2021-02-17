@@ -34,7 +34,7 @@ tail_prob # tail probability
 # As an example above, I picked a value of chi-square equal to a z=1.96 squared
 # Squaring z gives you a chi-square with 1 df.  Notice the tail probability
 
-To run a chi-square difference test, you need to provide
+#To run a chi-square difference test, you need to provide
 
 q= <the difference in chi-square goes here>             # chi-square value that you provide
   df= <the difference in degrees of freedom goes here>    # degrees of freedom that you provide
